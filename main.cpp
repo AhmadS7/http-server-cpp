@@ -16,4 +16,13 @@ int main() {
     // accept incoming connections and handle them asynchronously
     boost::asio::ip::tcp::socket socket(io_service);
     acceptor.accept(socket);
+
+    // Implement HTTP server logic
+    // define your HTTP server logic inside the asynchronous handler, parse incoming requests
+    // generate responses, and handle various HTTP methods
+    std::string message = "HTTP/1.1 200 OK\r\nContent-Length: 13\r\n\r\nHello, World!";
+    boost::asio::write(socket, boost::asio::buffer(message));
+
+    // Run I/O service
+    io_service.run();
 }
